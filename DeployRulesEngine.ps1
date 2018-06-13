@@ -5,7 +5,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 
-#Download the Service Fabric for Windows Server package
+#Download and Unpack the standalone Service Fabric for Windows Server package to your machine
 
 wget https://github.com/UlkaAsati/IBMCOS/blob/master/Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip?raw=true -outfile "C:\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip"
 cd C:\
