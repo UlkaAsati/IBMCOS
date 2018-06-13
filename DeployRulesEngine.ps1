@@ -1,6 +1,7 @@
 #Install choco and microsoft zure service Fabric SDK
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 
@@ -17,10 +18,6 @@ write-host "Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494 downloaded"
 
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 
-Connect-ServiceFabricCluster localhost:19000
-
-write-host "cluster created successfully"
-
 
 # Application deployment
 
@@ -35,7 +32,13 @@ cd c:\AppDeploy\
 
 write-host "created a dir to store application to be downloaded"
 
-# step3: download the publish.xml files and Rules Engine application to deploy
+#step3: connect to cluster
+
+Connect-ServiceFabricCluster localhost:19000
+
+write-host "cluster created successfully"
+
+# step4: download the publish.xml files and Rules Engine application to deploy
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 wget https://github.com/UlkaAsati/IBMCOS/blob/master/Apttus.RulesEngine-Package-4.0.0.91.zip?raw=true -outfile "C:\AppDeploy\Apttus.RulesEngine-Package-4.0.0.91.zip"
@@ -49,7 +52,7 @@ expand-archive -path ServiceFabric.zip -destinationpath '.\ServiceFabric'
 
 write-host "downloaded publish.xml and rules engine app"
 
-# step4 : deploy the application
+# step5 : deploy the application
 
 Connect-ServiceFabricCluster localhost:19000
 
