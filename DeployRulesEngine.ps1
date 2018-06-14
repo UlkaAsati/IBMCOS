@@ -17,7 +17,7 @@ choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 #create a cluster
 
 cd C:\
-& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+& "C:\ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
 
 #.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 
