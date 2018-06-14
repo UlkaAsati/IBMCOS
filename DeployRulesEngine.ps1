@@ -26,6 +26,8 @@ cd C:\
 
 #Step1: Import the Service Fabric SDK PowerShell module.
 
+cd C:\
+
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 
  #Step2: Create a directory to store the application that you download and deploy, such as C:\ServiceFabric.
