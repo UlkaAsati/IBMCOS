@@ -7,16 +7,19 @@ choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 
 #Download and Unpack the standalone Service Fabric for Windows Server package to your machine
 
-wget https://github.com/UlkaAsati/IBMCOS/blob/master/Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip?raw=true -outfile "C:\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip"
+#wget https://github.com/UlkaAsati/IBMCOS/blob/master/Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip?raw=true -outfile "C:\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip"
+#cd C:\
+#expand-archive -path Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip -destinationpath '.\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494'
+#cd Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494
+
+#write-host "Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494 downloaded"
+
+#create a cluster
+
 cd C:\
-expand-archive -path Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494.zip -destinationpath '.\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494'
-cd Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494
+& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
 
-write-host "Microsoft.Azure.ServiceFabric.WindowsServer.6.2.283.9494 downloaded"
-
-#create a standalone cluster
-
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
+#.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 
 
 # Application deployment
