@@ -26,6 +26,8 @@ $ENV:PATH="$ENV:PATH;c:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric
 
 # Application deployment
 
+Connect-ServiceFabricCluster localhost:19000
+
 #Step1: Import the Service Fabric SDK PowerShell module.
 
 cd C:\
@@ -61,9 +63,8 @@ write-host "downloaded publish.xml and rules engine app"
 
 # step4 : deploy the application
 
-Connect-ServiceFabricCluster localhost:19000
-write-host "cluster created successfully"
-
+[void](Connect-ServiceFabricCluster)
+$global:clusterConnection = $clusterConnection
 
 .\ServiceFabric\Deploy-FabricApplication.ps1 -PublishProfileFile .\ServiceFabric\plat-dev-aql-PublishProfile.xml  -ApplicationPackagePath 'C:\AppDeploy\Apttus.RulesEngine-Package-4.0.0.91\Release' -Action 'Create' -OverwriteBehavior 'Always'
 
