@@ -1,7 +1,6 @@
 #Install choco and microsoft zure service Fabric SDK
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 
@@ -18,7 +17,8 @@ choco install MicrosoftAzure-ServiceFabric-CoreSDK --source webpi --confirm
 
 cd C:\
 echo $ENV
-& "C:\ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
 
 #.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 
