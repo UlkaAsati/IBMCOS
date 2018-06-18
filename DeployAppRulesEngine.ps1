@@ -1,5 +1,7 @@
 # Application deployment
 
+Connect-ServiceFabricCluster localhost:19000
+
 #Step1: Import the Service Fabric SDK PowerShell module.
 
 cd C:\
@@ -15,11 +17,11 @@ write-host "created a dir to store application to be downloaded"
 
 #step3: connect to cluster
 
-Connect-ServiceFabricCluster localhost:19000
+#Connect-ServiceFabricCluster localhost:19000
 
-write-host "cluster created successfully"
+#write-host "cluster created successfully"
 
-# step4: download the publish.xml files and Rules Engine application to deploy
+# step3: download the publish.xml files and Rules Engine application to deploy
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 wget https://github.com/UlkaAsati/IBMCOS/blob/master/Apttus.RulesEngine-Package-4.0.0.91.zip?raw=true -outfile "C:\AppDeploy\Apttus.RulesEngine-Package-4.0.0.91.zip"
@@ -33,9 +35,10 @@ expand-archive -path ServiceFabric.zip -destinationpath '.\ServiceFabric'
 
 write-host "downloaded publish.xml and rules engine app"
 
-# step5 : deploy the application
+# step4 : deploy the application
 
-Connect-ServiceFabricCluster localhost:19000
+[void](Connect-ServiceFabricCluster)
+$global:clusterConnection = $clusterConnection
 
 .\ServiceFabric\Deploy-FabricApplication.ps1 -PublishProfileFile .\ServiceFabric\plat-dev-aql-PublishProfile.xml  -ApplicationPackagePath 'C:\AppDeploy\Apttus.RulesEngine-Package-4.0.0.91\Release' -Action 'Create' -OverwriteBehavior 'Always'
 
