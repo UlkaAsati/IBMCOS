@@ -1,5 +1,7 @@
 # Application deployment
 
+Start-Service FabricHostSvc
+
 Connect-ServiceFabricCluster localhost:19000
 
 #Step1: Import the Service Fabric SDK PowerShell module.
