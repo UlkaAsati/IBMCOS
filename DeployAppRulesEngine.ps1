@@ -2,6 +2,8 @@
 
 Start-Service FabricHostSvc
 
+Start-Sleep -s 300
+
 Connect-ServiceFabricCluster localhost:19000
 
 #Step1: Import the Service Fabric SDK PowerShell module.
