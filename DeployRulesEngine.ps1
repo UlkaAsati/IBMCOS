@@ -44,22 +44,22 @@ write-host "created a dir to store application to be downloaded"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-System.Net.ServicePointManager.Expect100Continue = false;
+[Net.ServicePointManager]::Expect100Continue = $false
 
 curl -v -H @{'X-JFrog-Art-Api'='AKCp5bAicvWg57NJqTy4oFwDWfW5HYAdm2BQJvMxYv22MypMEj3vJzuLXBgS3aqa4AerYQUmi'} 'https://art01.apttuscloud.io/aic/Apttus.RulesEngine/service-fabric/master/Apttus.RulesEngine-Package-1802.0.0.166.zip' -o "C:\AppDeploy\Apttus.RulesEngine-Package-1802.0.0.166.zip"
 cd C:\AppDeploy\
 expand-archive -path Apttus.RulesEngine-Package-1802.0.0.166.zip -destinationpath '.\Apttus.RulesEngine-Package-1802.0.0.166'
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-System.Net.ServicePointManager.Expect100Continue = false;
+[Net.ServicePointManager]::Expect100Continue = $false
 curl -v -H @{'X-JFrog-Art-Api'='AKCp5bAicvWg57NJqTy4oFwDWfW5HYAdm2BQJvMxYv22MypMEj3vJzuLXBgS3aqa4AerYQUmi'} 'https://art01.apttuscloud.io/FoundryTest/plat-dev-aql-ApplicationParameters.xml' -o "C:\AppDeploy\plat-dev-aql-ApplicationParameters.xml"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-System.Net.ServicePointManager.Expect100Continue = false;
+[Net.ServicePointManager]::Expect100Continue = $false
 curl -v -H @{'X-JFrog-Art-Api'='AKCp5bAicvWg57NJqTy4oFwDWfW5HYAdm2BQJvMxYv22MypMEj3vJzuLXBgS3aqa4AerYQUmi'} 'https://art01.apttuscloud.io/FoundryTest/Deploy-FabricApplication.ps1' -o "C:\AppDeploy\Deploy-FabricApplication.ps1"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-System.Net.ServicePointManager.Expect100Continue = false;
+[Net.ServicePointManager]::Expect100Continue = $false
 curl -v -H @{'X-JFrog-Art-Api'='AKCp5bAicvWg57NJqTy4oFwDWfW5HYAdm2BQJvMxYv22MypMEj3vJzuLXBgS3aqa4AerYQUmi'} 'https://art01.apttuscloud.io/FoundryTest/plat-dev-aql-PublishProfile.xml' -o "C:\AppDeploy\plat-dev-aql-PublishProfile.xml"
  
 
